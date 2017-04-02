@@ -1,0 +1,17 @@
+<tr>
+  <td>#</td>
+  <td><%= link_to(movie.name, movie_path(movie)) %></td>
+  <td><%= movie.date %></td>
+  <td><%= movie.film_type %></td>
+  <td><%= movie.film_time %></td>
+  <td><%= movie.director %></td>
+  <td><%= render_movie_actor(movie) %></td>
+  <td>
+    <% if current_user && current_user == movie.user %>
+      <%= link_to("Edit", edit_movie_path(movie), class: "btn btn-sm btn-default")%>
+      <%= link_to("Delete", movie_path(movie),    class: "btn btn-sm btn-default",
+                  method: :delete, data: { confirm: "Are you sure?" } )%>
+    <% end %>
+  </td>
+
+</tr>

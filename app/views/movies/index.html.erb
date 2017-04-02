@@ -1,0 +1,21 @@
+<div class="col-md-12">
+  <div class="group">
+    <%= link_to("New Movie", new_movie_path, class: "btn btn-primary pull-right") %>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>Name</td>
+        <td>Date</td>
+        <td>Film Type</td>
+        <td>Film Time</td>
+        <td>Director</td>
+        <td>Actor</td>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render :partial => "movie_item", :collection => @movies, :as => :movie %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,16 @@
+<%= simple_form_for @movie do |f| %>
+  <div class="form-group">
+    <%= f.input :name, input_html: { class: "form-control"} %>
+    <%= f.input :date, start_year: 1950, end_year: Date.today.year , input_html: { class: "form-control"} %>
+    <%= f.input :film_type, input_html: { class: "form-control"} %>
+    <%= f.input :film_time, input_html: { class: "form-control"} %>
+    <%= f.input :director, input_html: { class: "form-control"} %>
+    <%= f.input :actor, input_html: { class: "form-control"} %>
+    <%= f.input :imdb, input_html: { class: "form-control"} %>
+    <%= f.input :douban, input_html: { class: "form-control"} %>
+  </div>
+  <hr />
+  <div align="center">
+  <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
+  </div>
+<% end %>

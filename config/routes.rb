@@ -9,10 +9,12 @@ Rails.application.routes.draw do
     resources :posts
   end
 
+  resources :movies
+
   namespace :account do
     resources :groups
     resources :posts
   end
 
-  root 'groups#index'
+  root 'movies#index'
 end
