@@ -1,5 +1,8 @@
 <div class="col-md-12">
   <div class="movie">
+
+    <%= link_to("Write a Review", new_movie_review_path(@movie), class: "btn btn-default pull-right")%>
+
     <% if current_user && current_user == @movie.user %>
       <%= link_to("Edit", edit_movie_path(@movie), class: "btn btn-primary pull-right")%>
     <% end %>
@@ -11,4 +14,15 @@
   <hr />
   <p>Imdb : <a href="<%= @movie.imdb %>" target="_blank"><%= @movie.imdb %></a></p>
   <p>Duoban : <a href="<%= @movie.douban %>" target="_blank"><%= @movie.douban %></a></p>
+  <hr />
+  <h3><i>Reviews :</i></h3><br />
+  <% @reviews.each do |reivew| %>
+  <%= reivew.content %> <b> - <%= reivew.user.email %></b>
+
+  <hr />
+  <% end %>
+
+  <div class="text-center">
+    <%= will_paginate @reviews %>
+  </div>
 </div>

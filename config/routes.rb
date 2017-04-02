@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     resources :posts
   end
 
-  resources :movies
+  resources :movies do
+    resources :reviews
+  end
 
   namespace :account do
     resources :groups
