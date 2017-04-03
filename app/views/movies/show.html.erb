@@ -1,13 +1,27 @@
 <div class="col-md-12">
   <div class="movie">
 
-    <%= link_to("Write a Review", new_movie_review_path(@movie), class: "btn btn-default pull-right")%>
-
+    <span class="pull-right">
+      <% if current_user && current_user.is_movie_member_of?(@movie) %>
+        <%= link_to("移除收藏", remove_favorite_movie_path(@movie), method: :post, class: "btn btn-default") %>
+      <% else %>
+        <%= link_to("加入收藏", add_favorite_movie_path(@movie), method: :post, class: "btn btn-default") %>
+      <% end %>
+    </span>
+      <% if current_user && current_user.is_movie_member_of?(@movie) %>
+        <%= link_to("Write a Review", new_movie_review_path(@movie), class: "btn btn-default pull-right")%>
+      <% end %>
     <% if current_user && current_user == @movie.user %>
       <%= link_to("Edit", edit_movie_path(@movie), class: "btn btn-primary pull-right")%>
     <% end %>
   </div>
-  <h2><%= @movie.name %></h2>
+  <h2>
+    <%= @movie.name %>
+    <% if current_user && current_user.is_movie_member_of?(@movie) %>
+      ★
+    <% else %>
+    <% end %>
+  </h2>
   <p><%= @movie.date %> | <%= @movie.film_time %> | <%= @movie.film_type %></p>
   <h3>Director : </h3><p><%= @movie.director %></p>
   <h3>Actor : </h3><p><%= render_movie_actor(@movie) %></p>

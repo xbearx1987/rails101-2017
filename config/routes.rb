@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   end
 
   resources :movies do
+    member do
+      post :add_favorite
+      post :remove_favorite
+    end
+
     resources :reviews
   end
 

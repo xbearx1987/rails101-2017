@@ -24,4 +24,19 @@ class User < ApplicationRecord
   def quit!(group)
     participated_groups.delete(group)
   end
+
+  has_many :favorites
+  has_many :participated_favorites, :through => :favorites, :source => :movie
+
+  def is_movie_member_of?(movie)
+    participated_favorites.include?(movie)
+  end
+
+  def add_favorite!(movie)
+    participated_favorites << movie
+  end
+
+  def remove_favorite!(movie)
+    participated_favorites.delete(movie)
+  end
 end
