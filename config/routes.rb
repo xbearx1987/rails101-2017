@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   namespace :account do
     resources :groups
     resources :posts
+
+    resources :movies
+    resources :reviews
   end
 
   root 'movies#index'
